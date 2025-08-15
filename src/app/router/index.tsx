@@ -1,9 +1,10 @@
-import { createBrowserRouter, Outlet } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+import { DefaultLayout } from "../components/layouts/DefaultLayout";
 
 export const router = createBrowserRouter([
   // Основное содержание
   {
-    element: <Outlet />,
+    element: <DefaultLayout />,
     children: [
       {
         index: true,
