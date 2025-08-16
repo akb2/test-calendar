@@ -1,8 +1,8 @@
 import App from "#app/App";
+import reportWebVitals from "#libs/reportWebVitals";
+import "#styles";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import reportWebVitals from "./shared/libs/reportWebVitals";
-import "./shared/styles/index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,

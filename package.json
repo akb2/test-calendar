@@ -53,6 +53,37 @@
       "./src/app/*.tsx",
       "./src/app/*/index.ts",
       "./src/app/*/index.tsx"
+    ],
+    "#pages/*": [
+      "./src/pages/*",
+      "./src/pages/*.ts",
+      "./src/pages/*.tsx",
+      "./src/pages/*/index.ts",
+      "./src/pages/*/index.tsx"
+    ],
+    "#components/*": [
+      "./src/app/components/*",
+      "./src/app/components/*.ts",
+      "./src/app/components/*.tsx",
+      "./src/app/components/*/index.ts",
+      "./src/app/components/*/index.tsx"
+    ],
+    "#styles": "./src/shared/styles/index.css",
+    "#styles/*": [
+      "./src/shared/styles/*",
+      "./src/shared/styles/*.ts",
+      "./src/shared/styles/*.css",
+      "./src/shared/styles/*.scss",
+      "./src/shared/styles/*/index.ts",
+      "./src/shared/styles/*/index.css",
+      "./src/shared/styles/*/index.scss"
+    ],
+    "#libs/*": [
+      "./src/shared/libs/*",
+      "./src/shared/libs/*.ts",
+      "./src/shared/libs/*.tsx",
+      "./src/shared/libs/*/index.ts",
+      "./src/shared/libs/*/index.tsx"
     ]
   }
 }

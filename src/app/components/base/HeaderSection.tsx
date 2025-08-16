@@ -1,5 +1,5 @@
+import { Container } from "#components/base/Container/Container";
 import styled from "styled-components";
-import { Container } from "./Container/Container";
 
 const Root = styled.header`
   height: 80px;

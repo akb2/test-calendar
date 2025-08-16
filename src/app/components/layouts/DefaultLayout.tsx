@@ -1,7 +1,7 @@
+import { Container } from "#components/base/Container/Container";
+import { HeaderSection } from "#components/base/HeaderSection";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { Container } from "../base/Container/Container";
-import { HeaderSection } from "../base/HeaderSection";
 
 export const DefaultLayout = () => (
   <div>

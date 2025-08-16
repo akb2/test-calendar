@@ -1,5 +1,5 @@
+import { CSSChunk } from "#libs/App";
 import { css } from "styled-components";
-import { CSSChunk } from "./App";
 
 type BreakPointName =
   | "xxsmall"

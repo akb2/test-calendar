@@ -1,5 +1,5 @@
+import { DefaultLayout } from "#components/layouts/DefaultLayout";
 import { createBrowserRouter } from "react-router-dom";
-import { DefaultLayout } from "./сomponents/layouts/DefaultLayout";
 
 export const Router = createBrowserRouter([
   // Основное содержание
@@ -9,7 +9,7 @@ export const Router = createBrowserRouter([
       {
         index: true,
         lazy: () =>
-          import("../pages/HomePage").then(({ HomePage }) => ({
+          import("#pages/HomePage").then(({ HomePage }) => ({
             Component: HomePage,
           })),
       },
@@ -17,7 +17,7 @@ export const Router = createBrowserRouter([
       {
         path: "/about",
         lazy: () =>
-          import("../pages/AboutPage").then(({ AboutPage }) => ({
+          import("#pages/AboutPage").then(({ AboutPage }) => ({
             Component: AboutPage,
           })),
       },
