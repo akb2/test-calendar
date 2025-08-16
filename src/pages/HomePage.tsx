@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Container } from "../app/components/base/Container";
+import { Container } from "../app/сomponents/base/Container/Container";
 
 export const HomePage = () => (
   <Container>
