@@ -89,10 +89,10 @@
       "./src/app/models/*",
       "./src/app/models/*.ts"
     ],
-    "#helpers/*": [
-      "./src/app/helpers/*",
-      "./src/app/helpers/*.ts",
-      "./src/app/helpers/*.tsx"
+    "#utils/*": [
+      "./src/app/utils/*",
+      "./src/app/utils/*.ts",
+      "./src/app/utils/*.tsx"
     ]
   }
 }
