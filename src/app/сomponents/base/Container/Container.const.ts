@@ -1,4 +1,4 @@
-import { BreakPointsObject } from "../../../../shared/lib/Screens";
+import { BreakPointsObject } from "../../../../shared/libs/Screens";
 
 export const widths: BreakPointsObject<number> = {
   default: 600,
