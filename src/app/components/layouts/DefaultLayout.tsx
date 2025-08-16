@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
+import { Container } from "../base/Container";
 import { HeaderSection } from "../base/HeaderSection";
 
 export const DefaultLayout = () => (
@@ -10,6 +11,8 @@ export const DefaultLayout = () => (
       <Outlet />
     </Suspense>
 
-    <footer> Footer </footer>
+    <footer>
+      <Container>Footer</Container>
+    </footer>
   </div>
 );

@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { Container } from "../app/components/base/Container";
 
-export const AboutPage = () => <div>
-  <Link to="/">Home</Link>
-  <div>About</div>
-</div>;
+export const AboutPage = () => (
+  <Container>
+    <Link to="/">Home</Link>
+    <div>About</div>
+  </Container>
+);
