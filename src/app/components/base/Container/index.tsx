@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import styled, { css } from "styled-components";
-import { AdaptiveFor, BreakPointsObject } from "../../../shared/lib/Screens";
+import { AdaptiveFor, BreakPointsObject } from "../../../../shared/lib/Screens";
 
 const widths: BreakPointsObject<number> = {
   default: 600,
