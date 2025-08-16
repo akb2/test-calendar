@@ -1,4 +1,4 @@
-import { css, Interpolation } from "styled-components";
+import { css } from "styled-components";
 import { CSSChunk } from "../lib/App";
 
 type BreakPointName =
@@ -39,33 +39,30 @@ export const MinResolution = (screen: BreakPointName) => {
   return 1;
 };
 
-export const Adaptive =
-  (minScreen: BreakPointName | "auto", maxScreen: BreakPointName | "auto") =>
-  (
-    strings: TemplateStringsArray,
-    ...expr: Interpolation<object>[]
-  ): CSSChunk => {
-    const content = css(strings, ...expr);
+export const Adaptive = (
+  minScreen: BreakPointName | "auto",
+  maxScreen: BreakPointName | "auto",
+  content: CSSChunk,
+): CSSChunk => {
+  if (minScreen !== "auto" || maxScreen !== "auto") {
+    const styles = [
+      minScreen !== "auto"
+        ? `min-width: ${MinResolution(minScreen as BreakPointName)}px`
+        : "",
+      maxScreen !== "auto"
+        ? `max-width: ${MaxResolution(maxScreen as BreakPointName)}px`
+        : "",
+    ].filter(Boolean);
 
-    if (minScreen !== "auto" || maxScreen !== "auto") {
-      const styles = [
-        minScreen !== "auto"
-          ? `min-width: ${MinResolution(minScreen as BreakPointName)}px`
-          : "",
-        maxScreen !== "auto"
-          ? `max-width: ${MaxResolution(maxScreen as BreakPointName)}px`
-          : "",
-      ].filter(Boolean);
+    return css`
+      @media (${styles.join(") and (")}) {
+        ${content}
+      }
+    `;
+  }
 
-      return css`
-        @media (${styles.join(") and (")}) {
-          ${content}
-        }
-      `;
-    }
-
-    return content;
-  };
+  return content;
+};
 
 export const AdaptiveFor =
   <T extends unknown>(...maps: BreakPointsObject<T>[]) =>
@@ -73,12 +70,12 @@ export const AdaptiveFor =
     const screens = Object.keys(BreakPoints) as BreakPointName[];
 
     return css`
-      ${screens.map(
-        (screen) =>
-          Adaptive(
-            screen as BreakPointName,
-            screen as BreakPointName,
-          )`${render(...maps.map((value) => value[screen as BreakPointName] ?? value.default))}`,
+      ${screens.map((screen) =>
+        Adaptive(
+          screen,
+          screen,
+          render(...maps.map((value) => value[screen] ?? value.default)),
+        ),
       )}
     `;
   };
