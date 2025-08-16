@@ -1,4 +1,4 @@
-import { BreakPointsObject } from "#libs/Screens";
+import { BreakPointsObject } from "#models/Screens";
 
 export const widths: BreakPointsObject<number> = {
   default: 600,

@@ -1,4 +1,4 @@
-import { AdaptiveFor } from "#libs/Screens";
+import { AdaptiveFor } from "#helpers/Screens";
 import styled, { css } from "styled-components";
 import { paddingsY, widths } from "./Container.const";
 import { ContainerProps } from "./Container.types";

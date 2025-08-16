@@ -1,13 +1,6 @@
-import { CSSChunk } from "#libs/App";
+import { CSSChunk } from "#models/App";
+import { BreakPointName, BreakPointsObject } from "#models/Screens";
 import { css } from "styled-components";
-
-type BreakPointName =
-  | "xxsmall"
-  | "xsmall"
-  | "small"
-  | "middle"
-  | "large"
-  | "xlarge";
 
 const BreakPoints: Record<BreakPointName, number> = {
   xxsmall: 400,
@@ -17,10 +10,6 @@ const BreakPoints: Record<BreakPointName, number> = {
   large: 1800,
   xlarge: 100000,
 };
-
-export type BreakPointsObject<T extends any> = { default: T } & Partial<
-  Record<BreakPointName, T>
->;
 
 export const MaxResolution = (screen: BreakPointName) =>
   BreakPoints[screen] ?? 0;

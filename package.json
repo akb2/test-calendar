@@ -84,6 +84,15 @@
       "./src/shared/libs/*.tsx",
       "./src/shared/libs/*/index.ts",
       "./src/shared/libs/*/index.tsx"
+    ],
+    "#models/*": [
+      "./src/app/models/*",
+      "./src/app/models/*.ts"
+    ],
+    "#helpers/*": [
+      "./src/app/helpers/*",
+      "./src/app/helpers/*.ts",
+      "./src/app/helpers/*.tsx"
     ]
   }
 }
