@@ -45,5 +45,14 @@
   },
   "devDependencies": {
     "prettier": "^3.6.2"
+  },
+  "imports": {
+    "#app/*": [
+      "./src/app/*",
+      "./src/app/*.ts",
+      "./src/app/*.tsx",
+      "./src/app/*/index.ts",
+      "./src/app/*/index.tsx"
+    ]
   }
 }
