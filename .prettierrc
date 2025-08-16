@@ -1,5 +1,6 @@
 {
-  "singleQuote": true,
+  "singleQuote": false,
+  "doubleQuote": true,
   "printWidth": 80,
   "trailingComma": "all",
   "embeddedLanguageFormatting": "auto"

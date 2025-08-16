@@ -1,12 +1,13 @@
-import { css, Interpolation } from 'styled-components';
+import { css, Interpolation } from "styled-components";
+import { CSSChunk } from "../lib/App";
 
 type BreakPointName =
-  | 'xxsmall'
-  | 'xsmall'
-  | 'small'
-  | 'middle'
-  | 'large'
-  | 'xlarge';
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "middle"
+  | "large"
+  | "xlarge";
 
 const BreakPoints: Record<BreakPointName, number> = {
   xxsmall: 400,
@@ -39,26 +40,45 @@ export const MinResolution = (screen: BreakPointName) => {
 };
 
 export const Adaptive =
-  (minScreen: BreakPointName | 'auto', maxScreen: BreakPointName | 'auto') =>
-  (strings: TemplateStringsArray, ...expr: Interpolation<object>[]) => {
+  (minScreen: BreakPointName | "auto", maxScreen: BreakPointName | "auto") =>
+  (
+    strings: TemplateStringsArray,
+    ...expr: Interpolation<object>[]
+  ): CSSChunk => {
     const content = css(strings, ...expr);
 
-    if (minScreen !== 'auto' || maxScreen !== 'auto') {
-      const minResolution = MinResolution(minScreen as BreakPointName);
-      const maxResolution = MaxResolution(maxScreen as BreakPointName);
+    if (minScreen !== "auto" || maxScreen !== "auto") {
       const styles = [
-        minScreen !== 'auto' ? `@media (min-width: ${minResolution}px)` : '',
-        maxScreen !== 'auto' ? `@media (max-width: ${maxResolution}px)` : '',
-      ]
-        .filter(Boolean)
-        .join(' and ');
+        minScreen !== "auto"
+          ? `min-width: ${MinResolution(minScreen as BreakPointName)}px`
+          : "",
+        maxScreen !== "auto"
+          ? `max-width: ${MaxResolution(maxScreen as BreakPointName)}px`
+          : "",
+      ].filter(Boolean);
 
       return css`
-        @media (${styles}) {
+        @media (${styles.join(") and (")}) {
           ${content}
         }
       `;
     }
 
     return content;
+  };
+
+export const AdaptiveFor =
+  <T extends unknown>(...maps: BreakPointsObject<T>[]) =>
+  (render: (...map: T[]) => CSSChunk): CSSChunk => {
+    const screens = Object.keys(BreakPoints) as BreakPointName[];
+
+    return css`
+      ${screens.map(
+        (screen) =>
+          Adaptive(
+            screen as BreakPointName,
+            screen as BreakPointName,
+          )`${render(...maps.map((value) => value[screen as BreakPointName] ?? value.default))}`,
+      )}
+    `;
   };
