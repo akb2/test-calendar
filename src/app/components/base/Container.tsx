@@ -1,5 +1,10 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from 'react';
+import styled from 'styled-components';
+
+const Root = styled.div`
+  width: 100%;
+`;
 
 export const Container = ({ children }: PropsWithChildren) => (
-  <div className="container">{children}</div>
+  <Root>{children}</Root>
 );
