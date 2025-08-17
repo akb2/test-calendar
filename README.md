@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Тестовое задание
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<https://chatbullet.com/work/test-task-for-react-dev>
 
 ## Available Scripts
 
