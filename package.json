@@ -89,6 +89,10 @@
       "./src/app/models/*",
       "./src/app/models/*.ts"
     ],
+    "#data/*": [
+      "./src/app/data/*",
+      "./src/app/data/*.ts"
+    ],
     "#utils/*": [
       "./src/app/utils/*",
       "./src/app/utils/*.ts",

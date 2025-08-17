@@ -1,4 +1,5 @@
 import { DefaultLayout } from "#components/layouts/DefaultLayout";
+import { AboutPageUrl } from "#data/Routes";
 import { createBrowserRouter } from "react-router-dom";
 
 export const Router = createBrowserRouter([
@@ -15,7 +16,7 @@ export const Router = createBrowserRouter([
       },
       //
       {
-        path: "/about",
+        path: AboutPageUrl,
         lazy: () =>
           import("#pages/AboutPage").then(({ AboutPage }) => ({
             Component: AboutPage,
