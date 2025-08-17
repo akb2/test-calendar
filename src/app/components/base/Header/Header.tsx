@@ -8,7 +8,7 @@ export const Header = () => {
 
   return (
     <HeaderRoot>
-      <Container noPadding>123</Container>
+      <Container $noPadding>123</Container>
     </HeaderRoot>
   );
 };
