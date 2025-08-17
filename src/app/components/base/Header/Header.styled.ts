@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
-import { HeaderColor } from "./Header.const";
+import { HeaderBackgroundColor, HeaderTextColor } from "./Header.const";
 
 export const HeaderRoot = styled.header`
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${HeaderColor};
-  color: white;
+  background-color: ${HeaderBackgroundColor};
+  color: ${HeaderTextColor};
 `;

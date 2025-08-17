@@ -1,1 +1,2 @@
-export const HeaderColor = "darkolivegreen";
+export const HeaderBackgroundColor = "darkolivegreen";
+export const HeaderTextColor = "white";

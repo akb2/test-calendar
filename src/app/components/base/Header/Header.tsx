@@ -1,10 +1,10 @@
 import { Container } from "#components/base/Container/Container";
 import { UseThemeColor } from "#utils/Theme";
-import { HeaderColor } from "./Header.const";
+import { HeaderBackgroundColor } from "./Header.const";
 import { HeaderRoot } from "./Header.styled";
 
 export const Header = () => {
-  UseThemeColor(HeaderColor);
+  UseThemeColor(HeaderBackgroundColor);
 
   return (
     <HeaderRoot>
