@@ -1,11 +1,11 @@
 import { Container } from "#components/base/Container/Container";
-import { HeaderSection } from "#components/base/HeaderSection";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
+import { Header } from "../base/Header/Header";
 
 export const DefaultLayout = () => (
   <div>
-    <HeaderSection />
+    <Header />
 
     <Suspense fallback={<div> Загрузка...</div>}>
       <Outlet />
