@@ -1,3 +1,4 @@
+import { HeaderHeight } from "#data/layout";
 import { styled } from "styled-components";
 import { HeaderBackgroundColor, HeaderTextColor } from "./Header.const";
 
@@ -8,7 +9,7 @@ export const HeaderRoot = styled.header`
 
 export const HeaderLayout = styled.div`
   width: 100%;
-  height: 80px;
+  height: ${HeaderHeight};
   display: flex;
   justify-content: space-between;
   align-items: center;

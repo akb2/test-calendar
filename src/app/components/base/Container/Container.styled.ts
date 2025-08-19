@@ -1,3 +1,4 @@
+import { ContainerPaddingX } from "#app/data/layout";
 import { AdaptiveFor } from "#utils/Screens";
 import styled, { css } from "styled-components";
 import { paddingsY, widths } from "./Container.const";
@@ -21,8 +22,8 @@ const ContainerRootAdaptive = ({
   )(
     (width, paddingY) => css`
       width: ${width}px;
-      padding-left: ${$noPaddingLeft ? 0 : 15}px;
-      padding-right: 15px;
+      padding-left: ${$noPaddingLeft ? 0 : ContainerPaddingX};
+      padding-right: ${ContainerPaddingX};
 
       ${PaddingStyles(paddingY, $noPadding)}
     `,
