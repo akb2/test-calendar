@@ -1,5 +1,5 @@
 import { DefaultLayout } from "#components/layouts/DefaultLayout";
-import { AboutPageUrl } from "#data/Routes";
+import { AboutPageUrl, NotFoundPageUrl } from "#data/Routes";
 import { createBrowserRouter } from "react-router-dom";
 
 export const Router = createBrowserRouter([
@@ -22,6 +22,16 @@ export const Router = createBrowserRouter([
           import("#pages/AboutPage/AboutPage").then(({ AboutPage }) => ({
             Component: AboutPage,
           })),
+      },
+      // Страница 404
+      {
+        path: NotFoundPageUrl,
+        lazy: () =>
+          import("#pages/NotFoundPage/NotFoundPage").then(
+            ({ NotFoundPage }) => ({
+              Component: NotFoundPage,
+            }),
+          ),
       },
     ],
   },
