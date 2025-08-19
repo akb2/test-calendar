@@ -7,18 +7,19 @@ export const Router = createBrowserRouter([
   {
     element: <DefaultLayout />,
     children: [
+      // Главная страница
       {
         index: true,
         lazy: () =>
-          import("#pages/HomePage").then(({ HomePage }) => ({
+          import("#pages/HomePage/HomePage").then(({ HomePage }) => ({
             Component: HomePage,
           })),
       },
-      //
+      // О сайте
       {
         path: AboutPageUrl,
         lazy: () =>
-          import("#pages/AboutPage").then(({ AboutPage }) => ({
+          import("#pages/AboutPage/AboutPage").then(({ AboutPage }) => ({
             Component: AboutPage,
           })),
       },
