@@ -1,6 +1,14 @@
 import { ContainerPaddingX, HeaderHeight } from "#data/layout";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import {
+  HeaderMenuItemsActiveClass,
+  HeaderMenuItemsAnimationProperties,
+  HeaderMenuItemsAnimationSpeed,
+  HeaderMenuItemsBackgound,
+  HeaderMenuItemsBorderColor,
+  HeaderMenuItemsBorderY,
+} from "./HeaderMenu.const";
 
 export const HeaderMenuRoot = styled.div`
   display: flex;
@@ -13,9 +21,18 @@ export const HeaderMenuItem = styled(NavLink)`
   padding: 0 ${ContainerPaddingX};
   height: ${HeaderHeight};
   line-height: ${HeaderHeight};
-  transition: background-color 0.2s;
+  border-width: ${HeaderMenuItemsBorderY} 0;
+  border-style: solid;
+  border-color: transparent;
+  transition: ${HeaderMenuItemsAnimationProperties.map(
+    (prop) => prop + " " + HeaderMenuItemsAnimationSpeed,
+  ).join(", ")};
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: ${HeaderMenuItemsBackgound};
+  }
+
+  &.${HeaderMenuItemsActiveClass} {
+    border-bottom-color: ${HeaderMenuItemsBorderColor};
   }
 `;
