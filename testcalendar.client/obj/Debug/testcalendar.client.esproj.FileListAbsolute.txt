@@ -1,0 +1,1 @@
+d:\Documents\Frontend\TestCalendar\testcalendar.client\obj\Debug\testcalendar.client.esproj.CoreCompileInputs.cache
