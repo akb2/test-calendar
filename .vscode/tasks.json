@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dev-frontend",
+      "type": "npm",
+      "script": "dev",
+      "path": "./testcalendar.client",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "vite",
+        "pattern": [
+          {
+            "regexp": "."
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "vite v",
+          "endsPattern": "Local:"
+        }
+      }
+    }
+  ]
+}
