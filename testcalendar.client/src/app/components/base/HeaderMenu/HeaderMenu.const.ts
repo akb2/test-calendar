@@ -14,7 +14,7 @@ export const HeaderMenuItemsActiveClass = "active";
 export const HeaderMenuItems: HeaderMenuItem[] = [
   // Главное меню
   {
-    label: "Главная",
+    label: "Календарь",
     to: HomePageUrl,
     end: true,
   },
