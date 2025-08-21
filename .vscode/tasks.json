@@ -11,7 +11,11 @@
         "owner": "vite",
         "pattern": [
           {
-            "regexp": "."
+            "regexp": "^(\\S[^:]+):(\\d+):(\\d+):\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 4
           }
         ],
         "background": {
@@ -20,6 +24,24 @@
           "endsPattern": "Local:"
         }
       }
+    },
+    {
+      "label": "terminate dev-frontend",
+      "type": "shell",
+      "command": "echo ${input:terminateDevFrontend}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "close": true
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "terminateDevFrontend",
+      "type": "command",
+      "command": "workbench.action.tasks.terminate",
+      "args": "dev-frontend"
     }
   ]
 }
