@@ -6,7 +6,8 @@
       "type": "dotnet",
       "request": "launch",
       "projectPath": "${workspaceFolder}/TestCalendar.Server/TestCalendar.Server.csproj",
-      "preLaunchTask": "stop-ports"
+      "preLaunchTask": "stop-ports",
+      "postDebugTask": "stop-ports"
     }
   ]
 }
