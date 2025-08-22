@@ -1,19 +1,15 @@
-import { CurrentDateTimer } from "../../../utils/Date";
+import {
+  AfterMonth,
+  AfterMonthYear,
+  BeforeMonth,
+  BeforeMonthYear,
+  CurrentDateTimer,
+} from "../../../utils/Date";
 import { UpdateInterval } from "./CalendarDaysList.const";
 import type { MonthDaysListItem } from "./CalendarDaysList.types";
 
 const DaysInMonth = (month: number, year: number) =>
   new Date(year, month + 1, 0).getDate();
-
-const BeforeMonth = (month: number) => (month > 0 ? month - 1 : 11);
-
-const AfterMonth = (month: number) => (month < 11 ? month + 1 : 0);
-
-const BeforeMonthYear = (month: number, year: number) =>
-  BeforeMonth(month) > 0 ? year : year - 1;
-
-const AfterMonthYear = (month: number, year: number) =>
-  AfterMonth(month) < 11 ? year : year + 1;
 
 const IsCurrentDay = (date: Date, day: number, month: number, year: number) => {
   const currentDay = date.getDate();

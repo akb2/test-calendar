@@ -15,6 +15,7 @@
     <PackageJsonDependenciesReactRedux Condition="$(PackageJsonDependenciesReactRedux) == ''">^9.2.0</PackageJsonDependenciesReactRedux>
     <PackageJsonDependenciesReactRouterDom Condition="$(PackageJsonDependenciesReactRouterDom) == ''">^7.8.0</PackageJsonDependenciesReactRouterDom>
     <PackageJsonDependenciesReactScripts Condition="$(PackageJsonDependenciesReactScripts) == ''">5.0.1</PackageJsonDependenciesReactScripts>
+    <PackageJsonDependenciesReduxObservable Condition="$(PackageJsonDependenciesReduxObservable) == ''">^3.0.0-rc.2</PackageJsonDependenciesReduxObservable>
     <PackageJsonDependenciesStyledComponents Condition="$(PackageJsonDependenciesStyledComponents) == ''">^6.1.19</PackageJsonDependenciesStyledComponents>
     <PackageJsonDependenciesWebVitals Condition="$(PackageJsonDependenciesWebVitals) == ''">^2.1.4</PackageJsonDependenciesWebVitals>
     <PackageJsonDevdependenciesEslintJs Condition="$(PackageJsonDevdependenciesEslintJs) == ''">^9.33.0</PackageJsonDevdependenciesEslintJs>
