@@ -2,60 +2,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Server (run, https + SpaProxy)",
-      "type": "coreclr",
+      "name": "Дебаг",
+      "type": "dotnet",
       "request": "launch",
-      "program": "dotnet",
-      "args": [
-        "run",
-        "--launch-profile",
-        "https"
-      ],
-      "cwd": "${workspaceFolder}/TestCalendar.Server",
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-      },
-      "serverReadyAction": {
-        "action": "openExternally",
-        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
-        "uriFormat": "%s/swagger/index.html"
-      }
-    },
-    {
-      "name": "Server (watch, https + SpaProxy)",
-      "type": "coreclr",
-      "request": "launch",
-      "program": "dotnet",
-      "args": [
-        "watch",
-        "--project",
-        "${workspaceFolder}/TestCalendar.Server/TestCalendar.Server.csproj",
-        "run",
-        "--launch-profile",
-        "https"
-      ],
-      "cwd": "${workspaceFolder}",
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-      },
-      "serverReadyAction": {
-        "action": "openExternally",
-        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
-        "uriFormat": "%s"
-      },
-      "preLaunchTask": "dev-frontend",
-      "postDebugTask": "terminate dev-frontend"
-    }
-  ],
-  "compounds": [
-    {
-      "name": "Dev (Server watch + Frontend)",
-      "configurations": [
-        "Server (watch, https + SpaProxy)"
-      ],
-      "stopAll": true
+      "projectPath": "${workspaceFolder}/TestCalendar.Server/TestCalendar.Server.csproj",
+      "preLaunchTask": "stop-ports"
     }
   ]
 }

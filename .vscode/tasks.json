@@ -2,46 +2,22 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "dev-frontend",
-      "type": "npm",
-      "script": "dev",
-      "path": "./testcalendar.client",
-      "isBackground": true,
-      "problemMatcher": {
-        "owner": "vite",
-        "pattern": [
-          {
-            "regexp": "^(\\S[^:]+):(\\d+):(\\d+):\\s+(.*)$",
-            "file": 1,
-            "line": 2,
-            "column": 3,
-            "message": 4
-          }
-        ],
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": "vite v",
-          "endsPattern": "Local:"
-        }
-      }
-    },
-    {
-      "label": "terminate dev-frontend",
+      "label": "stop-ports",
       "type": "shell",
-      "command": "echo ${input:terminateDevFrontend}",
+      "command": "for p in 7015 5264 57642; do pid=$(lsof -nP -t -iTCP:$p -sTCP:LISTEN); [ -n \"$pid\" ] && kill -9 $pid || true; done",
       "problemMatcher": [],
+      "options": {
+        "shell": {
+          "executable": "bash",
+          "args": [
+            "-lc"
+          ]
+        }
+      },
       "presentation": {
         "reveal": "never",
         "close": true
       }
-    }
-  ],
-  "inputs": [
-    {
-      "id": "terminateDevFrontend",
-      "type": "command",
-      "command": "workbench.action.tasks.terminate",
-      "args": "dev-frontend"
     }
   ]
 }
