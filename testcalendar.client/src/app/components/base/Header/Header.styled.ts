@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
+import { HeaderHeight } from "../../../data/Theme";
 import { HeaderBackgroundColor, HeaderTextColor } from "./Header.const";
-import { HeaderHeight } from "../../../data/layout";
 
 export const HeaderRoot = styled.header`
   background-color: ${HeaderBackgroundColor};

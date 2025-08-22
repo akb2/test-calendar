@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ContainerPaddingX } from "../../../data/layout";
+import { ContainerPaddingX } from "../../../data/Theme";
 import { AdaptiveFor } from "../../../utils/Screens";
 import { paddingsY, widths } from "./Container.const";
 import type { ContainerProps } from "./Container.types";
