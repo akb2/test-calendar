@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 
-// один интервал в корне
-export const CurrentDateTimer = () => {
-  const msSecond = 1000;
+export const CurrentDateTimer = (updateInterval = 1000) => {
   const [date, setNow] = useState(() => new Date());
 
   useEffect(() => {
-    const id = setInterval(() => setNow(new Date()), msSecond);
+    const id = setInterval(() => setNow(new Date()), updateInterval);
 
     return () => clearInterval(id);
   });
