@@ -64,7 +64,7 @@ export const GetMonthDays = (
     }
 
     return {
-      isCurrent: IsCurrentDay(date, day, month, year),
+      isToday: IsCurrentDay(date, day, month, year),
       day,
       inMonth,
     };

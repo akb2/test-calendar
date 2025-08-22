@@ -11,20 +11,20 @@ export const CalendarDaysList = () => {
 
   return (
     <CalendarDaysListRoot>
-      {daysList.map((item, index) => (
-        <CalendarDaysListItem
-          key={CalendarDaysListItemKey(item, index)}
-          $inMonth={item.inMonth}
-          $isCurrent={!!item.isCurrent}
-        >
-          <CalendarDaysListItemNumber
-            $inMonth={item.inMonth}
-            $isCurrent={!!item.isCurrent}
+      {daysList.map((item, index) => {
+        const classes = `${item.inMonth && "current"} ${item.isToday && "today"}`;
+
+        return (
+          <CalendarDaysListItem
+            key={CalendarDaysListItemKey(item, index)}
+            className={classes}
           >
-            {item.day}
-          </CalendarDaysListItemNumber>
-        </CalendarDaysListItem>
-      ))}
+            <CalendarDaysListItemNumber className={classes}>
+              {item.day}
+            </CalendarDaysListItemNumber>
+          </CalendarDaysListItem>
+        );
+      })}
     </CalendarDaysListRoot>
   );
 };
