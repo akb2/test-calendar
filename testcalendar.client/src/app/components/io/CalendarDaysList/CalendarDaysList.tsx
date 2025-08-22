@@ -9,8 +9,12 @@ export const CalendarDaysList = () => {
 
   return (
     <CalendarDaysListRoot>
-      {daysList.map(({ day, inMonth }) => (
-        <CalendarDaysListItem key={day} $inMonth={inMonth} />
+      {daysList.map(({ day, inMonth, isCurrent }) => (
+        <CalendarDaysListItem
+          key={day}
+          $inMonth={inMonth}
+          $isCurrent={!!isCurrent}
+        />
       ))}
     </CalendarDaysListRoot>
   );

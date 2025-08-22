@@ -5,7 +5,6 @@ import type { MonthDaysListItem } from "./CalendarDaysList.types";
 const DaysInMonth = (month: number, year: number) =>
   new Date(year, month + 1, 0).getDate();
 const BeforeMonth = (month: number) => (month > 0 ? month - 1 : 11);
-const NextMonth = (month: number) => (month < 11 ? month + 1 : 0);
 const BeforeMonthYear = (month: number, year: number) =>
   month > 0 ? year : year - 1;
 
@@ -14,8 +13,12 @@ export const GetMonthDays = (
   mixedYear?: number,
 ): MonthDaysListItem[] => {
   const date = CurrentDateTimer(UpdateInterval);
-  const month = mixedMonth ?? date.getMonth();
-  const year = mixedYear ?? date.getFullYear();
+  const currentDay = date.getDate();
+  const currentMonth = date.getMonth();
+  const currentYear = date.getFullYear();
+  const month = mixedMonth ?? currentMonth;
+  const year = mixedYear ?? currentYear;
+  const isCurrentPeriod = month === currentMonth && year === currentYear;
   const maxDay = DaysInMonth(month, year);
   const beforeMaxDay = DaysInMonth(
     BeforeMonth(month),
@@ -34,7 +37,8 @@ export const GetMonthDays = (
       : position <= 0
         ? beforeMaxDay + position
         : position - maxDay;
+    const isCurrent = inMonth && day === currentDay && isCurrentPeriod;
 
-    return { day, inMonth };
+    return { day, inMonth, isCurrent };
   });
 };
