@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
-import { paddingsY, widths } from "./Container.const";
-import { AdaptiveFor } from "../../../utils/Screens";
 import { ContainerPaddingX } from "../../../data/layout";
+import { AdaptiveFor } from "../../../utils/Screens";
+import { paddingsY, widths } from "./Container.const";
 import type { ContainerProps } from "./Container.types";
 
 const PaddingStyles = (paddingY: number, noPadding = false) =>
@@ -15,7 +15,7 @@ const PaddingStyles = (paddingY: number, noPadding = false) =>
 const ContainerRootAdaptive = ({
   $noPadding,
   $noPaddingLeft,
-}: Pick<ContainerProps, "$noPadding" | "$noPaddingLeft">) =>
+}: ContainerProps) =>
   AdaptiveFor(
     widths,
     paddingsY,
@@ -29,9 +29,7 @@ const ContainerRootAdaptive = ({
     `,
   );
 
-export const ContainerRoot = styled.div<
-  Pick<ContainerProps, "$noPadding" | "$noPaddingLeft">
->`
+export const ContainerRoot = styled.div<ContainerProps>`
   ${ContainerRootAdaptive}
 
   max-width: 100%;
