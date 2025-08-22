@@ -5,12 +5,11 @@ import { paddingsY, widths } from "./Container.const";
 import type { ContainerProps } from "./Container.types";
 
 const PaddingStyles = (paddingY: number, noPadding = false) =>
-  noPadding
-    ? ""
-    : css`
-        padding-top: ${paddingY}px;
-        padding-bottom: ${paddingY}px;
-      `;
+  !noPadding &&
+  css`
+    padding-top: ${paddingY}px;
+    padding-bottom: ${paddingY}px;
+  `;
 
 const ContainerRootAdaptive = ({
   $noPadding,
