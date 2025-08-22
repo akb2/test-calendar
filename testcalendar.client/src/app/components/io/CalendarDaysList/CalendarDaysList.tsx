@@ -1,6 +1,7 @@
 import { CalendarDaysListItemKey } from "./CalendarDaysList.const";
 import {
   CalendarDaysListItem,
+  CalendarDaysListItemNumber,
   CalendarDaysListRoot,
 } from "./CalendarDaysList.styled";
 import { GetMonthDays } from "./CalendarDaysList.utils";
@@ -15,7 +16,14 @@ export const CalendarDaysList = () => {
           key={CalendarDaysListItemKey(item, index)}
           $inMonth={item.inMonth}
           $isCurrent={!!item.isCurrent}
-        />
+        >
+          <CalendarDaysListItemNumber
+            $inMonth={item.inMonth}
+            $isCurrent={!!item.isCurrent}
+          >
+            {item.day}
+          </CalendarDaysListItemNumber>
+        </CalendarDaysListItem>
       ))}
     </CalendarDaysListRoot>
   );

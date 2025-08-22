@@ -29,6 +29,26 @@ const DayItemInMonthStyle = ({ $inMonth }: CalendarDaysListItemProps) =>
     background-color: ${DefaultColor};
   `;
 
+const DayItemNumberInMonthHighLight = ({
+  $inMonth,
+  $isCurrent,
+}: CalendarDaysListItemProps) =>
+  $inMonth &&
+  $isCurrent &&
+  css`
+    color: white;
+  `;
+
+const DayItemNumberOutMonthHighLight = ({
+  $inMonth,
+  $isCurrent,
+}: CalendarDaysListItemProps) =>
+  !$inMonth &&
+  $isCurrent &&
+  css`
+    color: white;
+  `;
+
 export const CalendarDaysListRoot = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -45,4 +65,17 @@ export const CalendarDaysListItem = styled.div<CalendarDaysListItemProps>`
   ${DayItemInMonthStyle}
   ${DayItemCurrentInMonthStyle}
   ${DayItemCurrentOutMonthStyle}
+`;
+
+export const CalendarDaysListItemNumber = styled.span<CalendarDaysListItemProps>`
+  position: absolute;
+  display: inline-block;
+  top: 3px;
+  right: 8px;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+
+  ${DayItemNumberInMonthHighLight};
+  ${DayItemNumberOutMonthHighLight};
 `;
