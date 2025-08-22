@@ -1,14 +1,17 @@
 import styled, { css } from "styled-components";
 import type { CalendarDaysListItemProps } from "./CalendarDaysList.types";
 
-const DayItemStyle = ({ $inMonth }: CalendarDaysListItemProps) =>
-  $inMonth
-    ? css`
-        background-color: #eee;
-      `
-    : css`
-        border: 1px solid #eee;
-      `;
+const DayItemInMonthStyle = ({ $inMonth }: CalendarDaysListItemProps) =>
+  $inMonth &&
+  css`
+    background-color: #ccc;
+  `;
+
+const DayItemCurrentStyle = ({ $isCurrent }: CalendarDaysListItemProps) =>
+  $isCurrent &&
+  css`
+    background-color: #f00;
+  `;
 
 export const CalendarDaysListRoot = styled.div`
   display: grid;
@@ -21,6 +24,8 @@ export const CalendarDaysListItem = styled.div<CalendarDaysListItemProps>`
   position: relative;
   padding-bottom: 100%;
   border-radius: 5px;
+  border: 1px solid #ccc;
 
-  ${DayItemStyle}
+  ${DayItemInMonthStyle}
+  ${DayItemCurrentStyle}
 `;

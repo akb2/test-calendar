@@ -1,3 +1,4 @@
+import { CalendarDaysListItemKey } from "./CalendarDaysList.const";
 import {
   CalendarDaysListItem,
   CalendarDaysListRoot,
@@ -9,11 +10,11 @@ export const CalendarDaysList = () => {
 
   return (
     <CalendarDaysListRoot>
-      {daysList.map(({ day, inMonth, isCurrent }) => (
+      {daysList.map((item, index) => (
         <CalendarDaysListItem
-          key={day}
-          $inMonth={inMonth}
-          $isCurrent={!!isCurrent}
+          key={CalendarDaysListItemKey(item, index)}
+          $inMonth={item.inMonth}
+          $isCurrent={!!item.isCurrent}
         />
       ))}
     </CalendarDaysListRoot>
