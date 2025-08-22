@@ -6,6 +6,8 @@ const UpdateIntervalByMin = 5;
 
 export const UpdateInterval = MsInSec * SecondsInMin * UpdateIntervalByMin;
 
+export const DefaultColor = "lightgray";
+
 export const CalendarDaysListItemKey = (
   item: MonthDaysListItem,
   index: number,

@@ -38,7 +38,6 @@ export const GetMonthDays = (
   const afterMonthYear = AfterMonthYear(neededMonth, neededYear);
 
   const beforeMaxDay = DaysInMonth(beforeMonth, beforeMonthYear);
-
   const maxDay = DaysInMonth(neededMonth, neededYear);
   const beforeDaysCount = new Date(neededYear, neededMonth, 1).getDay() - 1;
   const calcDays = maxDay + beforeDaysCount;
