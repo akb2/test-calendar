@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
-import { ContainerPaddingX } from "../../../data/Theme";
+import { ContainerPaddingX, containersPaddingsY } from "../../../data/Theme";
 import { AdaptiveFor } from "../../../utils/Screens";
-import { paddingsY, widths } from "./Container.const";
+import { widths } from "./Container.const";
 import type { ContainerProps } from "./Container.types";
 
 const PaddingStyles = (paddingY: number, noPadding = false) =>
@@ -17,7 +17,7 @@ const ContainerRootAdaptive = ({
 }: ContainerProps) =>
   AdaptiveFor(
     widths,
-    paddingsY,
+    containersPaddingsY,
   )(
     (width, paddingY) => css`
       width: ${width}px;
