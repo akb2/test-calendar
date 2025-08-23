@@ -6,11 +6,12 @@ import {
   CalendarDaysListItemNumber,
   CalendarDaysListRoot,
 } from "./CalendarDaysList.styled";
+import type { CalendarDaysListProps } from "./CalendarDaysList.types";
 import { GetMonthDays } from "./CalendarDaysList.utils";
 
-export const CalendarDaysList = () => {
-  const year = useAppSelector(selectYear);
-  const month = useAppSelector(selectMonth);
+export const CalendarDaysList = ({ $month, $year }: CalendarDaysListProps) => {
+  const month = $month ?? useAppSelector(selectMonth);
+  const year = $year ?? useAppSelector(selectYear);
   const daysList = GetMonthDays(month, year);
 
   return (
