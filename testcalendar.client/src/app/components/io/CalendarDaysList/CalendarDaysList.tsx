@@ -1,5 +1,3 @@
-import { selectMonth, selectYear } from "../../../store/calendar/selectors";
-import { useAppSelector } from "../../../store/hooks";
 import { CalendarDaysListItemKey } from "./CalendarDaysList.const";
 import {
   CalendarDaysListItem,
@@ -10,9 +8,7 @@ import type { CalendarDaysListProps } from "./CalendarDaysList.types";
 import { GetMonthDays } from "./CalendarDaysList.utils";
 
 export const CalendarDaysList = ({ $month, $year }: CalendarDaysListProps) => {
-  const month = $month ?? useAppSelector(selectMonth);
-  const year = $year ?? useAppSelector(selectYear);
-  const daysList = GetMonthDays(month, year);
+  const daysList = GetMonthDays($month, $year);
 
   return (
     <CalendarDaysListRoot>
