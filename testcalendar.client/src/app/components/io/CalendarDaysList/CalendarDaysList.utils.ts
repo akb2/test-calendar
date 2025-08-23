@@ -37,7 +37,7 @@ export const GetMonthDays = (
   const maxDay = DaysInMonth(neededMonth, neededYear);
   const beforeDaysCount = new Date(neededYear, neededMonth, 1).getDay() - 1;
   const calcDays = maxDay + beforeDaysCount;
-  const afterDaysCount = Math.round(calcDays / 7) * 7 - calcDays;
+  const afterDaysCount = Math.ceil(calcDays / 7) * 7 - calcDays;
   const allDays = beforeDaysCount + maxDay + afterDaysCount;
 
   return Array.from({ length: allDays }, (_, i) => {
