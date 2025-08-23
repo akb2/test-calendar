@@ -8,5 +8,5 @@ export interface CalendarDaysListProps extends PropsWithChildren {
 export type MonthDaysListItem = {
   day: number;
   inMonth: boolean;
-  isToday?: boolean;
+  isToday: boolean;
 };

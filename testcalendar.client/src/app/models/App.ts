@@ -5,3 +5,5 @@ export type TypeOrArray<T> = T | T[];
 export type CSSChunk = ReturnType<typeof css>;
 
 export type Nullable<T> = T | null | undefined;
+
+export type Direction = -1 | 0 | 1;
