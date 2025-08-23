@@ -1,0 +1,4 @@
+{
+  "typescript.tsdk": "testcalendar.client/node_modules/typescript/lib",
+  "typescript.preferences.importModuleSpecifier": "relative",
+}

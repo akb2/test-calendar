@@ -15,7 +15,6 @@
     "react-dom": "^19.1.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.8.0",
-    "react-scripts": "5.0.1",
     "redux-observable": "^3.0.0-rc.2",
     "styled-components": "^6.1.19",
     "web-vitals": "^2.1.4"
@@ -33,7 +32,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
     "prettier": "^3.6.2",
-    "typescript": "^4.9.5",
+    "typescript": "^5.9.2",
     "vite": "^7.1.2"
   }
 }
