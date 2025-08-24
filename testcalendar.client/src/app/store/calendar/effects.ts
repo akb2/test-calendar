@@ -1,5 +1,6 @@
 import { combineEpics, ofType, StateObservable } from "redux-observable";
-import { map, withLatestFrom } from "rxjs/operators";
+import type { Observable } from "rxjs";
+import { map, tap, withLatestFrom } from "rxjs/operators";
 import {
   AfterMonth,
   AfterMonthYear,
@@ -8,13 +9,19 @@ import {
 } from "../../utils/Date";
 import type { RootState } from "../types";
 import { nextMonth, prevMonth, setDate } from "./slice";
+import type { CalendarAction } from "./types";
 
-const nextMonthEpic = (action$: any, state$: StateObservable<RootState>) =>
+const nextMonthEpic = (
+  action$: Observable<CalendarAction>,
+  state$: StateObservable<RootState>,
+) =>
   action$.pipe(
+    tap(console.log),
     ofType(nextMonth.type),
     withLatestFrom(state$),
     map(([_, state]) => {
-      const { year, month } = state.value.calendar;
+      console.log(_, state);
+      const { year, month } = state.calendar;
 
       return setDate({
         month: AfterMonth(month),
@@ -23,12 +30,15 @@ const nextMonthEpic = (action$: any, state$: StateObservable<RootState>) =>
     }),
   );
 
-const prevMonthEpic = (action$: any, state$: StateObservable<RootState>) =>
+const prevMonthEpic = (
+  action$: Observable<CalendarAction>,
+  state$: StateObservable<RootState>,
+) =>
   action$.pipe(
     ofType(prevMonth.type),
     withLatestFrom(state$),
     map(([_, state]) => {
-      const { year, month } = state.value.calendar;
+      const { year, month } = state.calendar;
 
       return setDate({
         month: BeforeMonth(month),

@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from "react";
 
 export interface ButtonProps extends PropsWithChildren {
-  title: string;
+  $title: string;
+  $click?: () => void;
 }
