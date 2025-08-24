@@ -14,7 +14,6 @@
     <PackageJsonDependenciesReactDom Condition="$(PackageJsonDependenciesReactDom) == ''">^19.1.1</PackageJsonDependenciesReactDom>
     <PackageJsonDependenciesReactRedux Condition="$(PackageJsonDependenciesReactRedux) == ''">^9.2.0</PackageJsonDependenciesReactRedux>
     <PackageJsonDependenciesReactRouterDom Condition="$(PackageJsonDependenciesReactRouterDom) == ''">^7.8.0</PackageJsonDependenciesReactRouterDom>
-    <PackageJsonDependenciesReactScripts Condition="$(PackageJsonDependenciesReactScripts) == ''">5.0.1</PackageJsonDependenciesReactScripts>
     <PackageJsonDependenciesReduxObservable Condition="$(PackageJsonDependenciesReduxObservable) == ''">^3.0.0-rc.2</PackageJsonDependenciesReduxObservable>
     <PackageJsonDependenciesStyledComponents Condition="$(PackageJsonDependenciesStyledComponents) == ''">^6.1.19</PackageJsonDependenciesStyledComponents>
     <PackageJsonDependenciesWebVitals Condition="$(PackageJsonDependenciesWebVitals) == ''">^2.1.4</PackageJsonDependenciesWebVitals>
@@ -30,7 +29,8 @@
     <PackageJsonDevdependenciesEslintPluginReactRefresh Condition="$(PackageJsonDevdependenciesEslintPluginReactRefresh) == ''">^0.4.20</PackageJsonDevdependenciesEslintPluginReactRefresh>
     <PackageJsonDevdependenciesGlobals Condition="$(PackageJsonDevdependenciesGlobals) == ''">^16.3.0</PackageJsonDevdependenciesGlobals>
     <PackageJsonDevdependenciesPrettier Condition="$(PackageJsonDevdependenciesPrettier) == ''">^3.6.2</PackageJsonDevdependenciesPrettier>
-    <PackageJsonDevdependenciesTypescript Condition="$(PackageJsonDevdependenciesTypescript) == ''">^4.9.5</PackageJsonDevdependenciesTypescript>
+    <PackageJsonDevdependenciesRxjs Condition="$(PackageJsonDevdependenciesRxjs) == ''">^7.8.2</PackageJsonDevdependenciesRxjs>
+    <PackageJsonDevdependenciesTypescript Condition="$(PackageJsonDevdependenciesTypescript) == ''">^5.9.2</PackageJsonDevdependenciesTypescript>
     <PackageJsonDevdependenciesVite Condition="$(PackageJsonDevdependenciesVite) == ''">^7.1.2</PackageJsonDevdependenciesVite>
   </PropertyGroup>
 </Project>
