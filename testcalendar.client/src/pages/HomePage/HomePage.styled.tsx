@@ -14,4 +14,16 @@ export const Actions = styled.div`
   )}
 `;
 
-export const CalendarLabel = styled.div``;
+export const CalendarLabelLayout = styled.div`
+  text-align: center;
+`;
+
+export const CalendarLabel = styled.div`
+  font-size: 28px;
+  font-weight: bold;
+`;
+
+export const CalendarSubLabel = styled.div`
+  font-size: 16px;
+  text-transform: uppercase;
+`;
