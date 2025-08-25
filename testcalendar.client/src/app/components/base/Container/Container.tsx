@@ -5,8 +5,13 @@ export const Container = ({
   children,
   $noPadding,
   $noPaddingLeft,
+  $noPaddingRight,
 }: ContainerProps) => (
-  <ContainerRoot $noPadding={$noPadding} $noPaddingLeft={$noPaddingLeft}>
+  <ContainerRoot
+    $noPadding={$noPadding}
+    $noPaddingLeft={$noPaddingLeft}
+    $noPaddingRight={$noPaddingRight}
+  >
     {children}
   </ContainerRoot>
 );

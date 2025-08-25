@@ -11,18 +11,13 @@ const PaddingStyles = (paddingY: number, noPadding = false) =>
     padding-bottom: ${paddingY}px;
   `;
 
-const ContainerRootAdaptive = ({
-  $noPadding,
-  $noPaddingLeft,
-}: ContainerProps) =>
+const ContainerRootAdaptive = ({ $noPadding }: ContainerProps) =>
   AdaptiveFor(
     widths,
     containersPaddingsY,
   )(
     (width, paddingY) => css`
       width: ${width}px;
-      padding-left: ${$noPaddingLeft ? 0 : ContainerPaddingX};
-      padding-right: ${ContainerPaddingX};
 
       ${PaddingStyles(paddingY, $noPadding)}
     `,
@@ -30,6 +25,11 @@ const ContainerRootAdaptive = ({
 
 export const ContainerRoot = styled.div<ContainerProps>`
   ${ContainerRootAdaptive}
+
+  ${({ $noPaddingLeft, $noPaddingRight }) => css`
+    padding-left: ${$noPaddingLeft ? 0 : ContainerPaddingX};
+    padding-right: ${$noPaddingRight ? 0 : ContainerPaddingX};
+  `}
 
   max-width: 100%;
   margin: 0 auto;
