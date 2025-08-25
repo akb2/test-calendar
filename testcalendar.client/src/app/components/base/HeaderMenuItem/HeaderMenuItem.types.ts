@@ -3,4 +3,5 @@ import type { HeaderMenuItem } from "../../../models/Theme";
 
 export interface HeaderMenuItemProps extends PropsWithChildren {
   $menuItem?: HeaderMenuItem;
+  $click?: () => void;
 }

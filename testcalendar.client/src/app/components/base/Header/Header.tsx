@@ -1,3 +1,5 @@
+import { setDate } from "../../../store/calendar/slice";
+import { useAppDispatch } from "../../../store/hooks";
 import { UseThemeColor } from "../../../utils/Theme";
 import { CurrentDate } from "../../io/CurrentDate/CurrentDate";
 import { Container } from "../Container/Container";
@@ -7,6 +9,11 @@ import { HeaderBackgroundColor } from "./Header.const";
 import { HeaderLayout, HeaderRoot } from "./Header.styled";
 
 export const Header = () => {
+  const dispatcher = useAppDispatch();
+  const now = new Date();
+  const month = now.getMonth();
+  const year = now.getFullYear();
+
   UseThemeColor(HeaderBackgroundColor);
 
   return (
@@ -14,7 +21,7 @@ export const Header = () => {
       <Container $noPadding $noPaddingLeft $noPaddingRight>
         <HeaderLayout>
           <HeaderMenu />
-          <HeaderMenuItem>
+          <HeaderMenuItem $click={() => dispatcher(setDate({ month, year }))}>
             <CurrentDate />
           </HeaderMenuItem>
         </HeaderLayout>

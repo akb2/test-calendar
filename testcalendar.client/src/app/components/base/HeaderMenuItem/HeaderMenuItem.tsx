@@ -5,7 +5,11 @@ import {
 import type { HeaderMenuItemProps } from "./HeaderMenuItem.types";
 import { HeaderMenuItemsActiveDetect } from "./HeaderMenuItem.utils";
 
-export const HeaderMenuItem = ({ children, $menuItem }: HeaderMenuItemProps) =>
+export const HeaderMenuItem = ({
+  children,
+  $menuItem,
+  $click,
+}: HeaderMenuItemProps) =>
   $menuItem ? (
     <HeaderMenuItemLinkRoot
       to={$menuItem.to}
@@ -15,5 +19,5 @@ export const HeaderMenuItem = ({ children, $menuItem }: HeaderMenuItemProps) =>
       {$menuItem.label}
     </HeaderMenuItemLinkRoot>
   ) : (
-    <HeaderMenuItemRoot>{children}</HeaderMenuItemRoot>
+    <HeaderMenuItemRoot onClick={$click}>{children}</HeaderMenuItemRoot>
   );
