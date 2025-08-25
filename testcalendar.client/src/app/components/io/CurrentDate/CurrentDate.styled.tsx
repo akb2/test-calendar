@@ -4,6 +4,7 @@ const CurrentDateNode = styled.time`
   display: block;
   font-size: 19px;
   font-weight: normal;
+  line-height: 1.25;
 `;
 
 export const CurrentDateRoot = styled.div`
