@@ -1,18 +1,16 @@
 import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { ContainerPaddingX, HeaderHeight } from "../../../data/Theme";
+import {
+  AnimationSpeed,
+  ContainerPaddingX,
+  HeaderHeight,
+} from "../../../data/Theme";
 import {
   HeaderMenuItemsActiveClass,
-  HeaderMenuItemsAnimationProperties,
-  HeaderMenuItemsAnimationSpeed,
   HeaderMenuItemsBackgound,
   HeaderMenuItemsBorderColor,
   HeaderMenuItemsBorderY,
 } from "./HeaderMenuItem.const";
-
-const TransitionProperty = HeaderMenuItemsAnimationProperties.map(
-  (prop) => prop + " " + HeaderMenuItemsAnimationSpeed,
-).join(", ");
 
 const HeaderMenuItemStyles = css`
   color: white;
@@ -24,7 +22,8 @@ const HeaderMenuItemStyles = css`
   border-style: solid;
   border-color: transparent;
   cursor: pointer;
-  transition: ${TransitionProperty};
+  transition-property: border-color, background-color;
+  transition-duration: ${AnimationSpeed};
 
   &:hover {
     background-color: ${HeaderMenuItemsBackgound};
