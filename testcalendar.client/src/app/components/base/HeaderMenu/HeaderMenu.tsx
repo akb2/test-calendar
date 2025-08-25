@@ -1,18 +1,11 @@
+import { HeaderMenuItem } from "../HeaderMenuItem/HeaderMenuItem";
 import { HeaderMenuItems } from "./HeaderMenu.const";
-import { HeaderMenuItem, HeaderMenuRoot } from "./HeaderMenu.styled";
-import { HeaderMenuItemsActiveDetect } from "./HeaderMenu.utils";
+import { HeaderMenuRoot } from "./HeaderMenu.styled";
 
 export const HeaderMenu = () => (
   <HeaderMenuRoot>
-    {HeaderMenuItems.map((item) => (
-      <HeaderMenuItem
-        key={item.to}
-        to={item.to}
-        end={!!item.end}
-        className={HeaderMenuItemsActiveDetect}
-      >
-        {item.label}
-      </HeaderMenuItem>
+    {HeaderMenuItems.map((menuItem) => (
+      <HeaderMenuItem key={menuItem.to} $menuItem={menuItem} />
     ))}
   </HeaderMenuRoot>
 );
