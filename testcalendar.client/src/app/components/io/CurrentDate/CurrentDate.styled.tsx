@@ -1,6 +1,6 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 
-const CurrentDateNode = styled.time`
+const CurrentDateNode = css`
   display: block;
   font-size: 19px;
   font-weight: normal;
@@ -13,13 +13,28 @@ export const CurrentDateRoot = styled.div`
   align-items: flex-end;
 `;
 
-export const CurrentDateTitle = styled(CurrentDateNode)`
+export const CurrentDateTitle = styled.time`
+  ${CurrentDateNode}
+
   font-size: 12px;
   opacity: 0.9;
 `;
 
-export const CurrentDateSubTitle = styled(CurrentDateNode)`
+export const CurrentDateSubTitleOverlay = styled.time`
+  height: auto;
+  line-height: 1;
+  text-align: right;
+`;
+
+export const CurrentDateSubTitle = styled.span`
+  ${CurrentDateNode}
+
+  display: inline-block;
   font-weight: bold;
-  width: 87px;
   text-align: left;
+  vertical-align: top;
+
+  &.digit {
+    width: 22px;
+  }
 `;
