@@ -4,8 +4,9 @@ import { DefaultColor } from "./CalendarDaysList.const";
 
 export const CalendarDaysListRoot = styled.div`
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 160px));
   gap: 8px;
+  justify-content: center;
 `;
 
 export const CalendarDaysListItem = styled.div`
