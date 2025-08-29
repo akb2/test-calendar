@@ -1,11 +1,5 @@
 import { ofType, type StateObservable } from "redux-observable";
-import {
-  map,
-  Observable,
-  tap,
-  withLatestFrom,
-  type OperatorFunction,
-} from "rxjs";
+import { map, Observable, withLatestFrom, type OperatorFunction } from "rxjs";
 import type {
   AppActions,
   CreateEffectCallback,
@@ -51,7 +45,6 @@ export function CreateEffect<A, B, C, D>(
     state$: StateObservable<RootState>,
   ) => {
     const effect = action$.pipe(
-      tap(console.log),
       ofType<AppActions, AppActions["type"], AppActions>(type),
       withLatestFrom(state$),
       map(([action, state]) => <EffectData>{ action, state }),
