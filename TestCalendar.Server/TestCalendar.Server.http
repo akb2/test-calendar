@@ -1,6 +1,6 @@
 @TestCalendar.Server_HostAddress = http://localhost:5264
 
-GET {{TestCalendar.Server_HostAddress}}/weatherforecast/
+GET {{TestCalendar.Server_HostAddress}}/api/calendar/selected-date
 Accept: application/json
 
 ###
