@@ -7,14 +7,18 @@ import {
 import { createEpicMiddleware } from "redux-observable";
 import { calendarReducer } from "./calendar/slice";
 import { rootEpic } from "./epics";
-import type { AppAction, RootState } from "./types";
+import type { AppActions, RootState } from "./types";
 
 const reducers: ReducersMapObject<RootState> = {
   calendar: calendarReducer,
 };
 
 const rootReducer: Reducer<RootState> = combineReducers(reducers);
-const epicMiddleware = createEpicMiddleware<AppAction, AppAction, RootState>();
+const epicMiddleware = createEpicMiddleware<
+  AppActions,
+  AppActions,
+  RootState
+>();
 
 export const store = configureStore({
   reducer: rootReducer,
