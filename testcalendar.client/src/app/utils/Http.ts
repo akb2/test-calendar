@@ -9,11 +9,17 @@ const Request = <O, I extends Nullable<object> = undefined>(
 ): Observable<O> =>
   new Observable((observer) => {
     fetch(url, { method, body: !!body ? JSON.stringify(body) : undefined })
-      .then((responce) =>
-        responce.ok
-          ? observer.next(responce.json() as O)
-          : observer.error(responce),
-      )
+      .then(async (responce) => {
+        if (responce.ok) {
+          try {
+            return observer.next((await responce.json()) as O);
+          } catch (error) {
+            observer.error(error);
+          }
+        } else {
+          observer.error(responce);
+        }
+      })
       .catch((error) => observer.error(error));
   });
 

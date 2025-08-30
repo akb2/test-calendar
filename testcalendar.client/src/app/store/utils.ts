@@ -33,12 +33,22 @@ export function CreateEffect<A, B, C, D>(
   operatorD: OperatorFunction<C, D>,
 ): CreateEffectCallback<D>;
 
-export function CreateEffect<A, B, C, D>(
+export function CreateEffect<A, B, C, D, E>(
+  type: AppActions["type"],
+  operatorA: OperatorFunction<EffectData, A>,
+  operatorB: OperatorFunction<A, B>,
+  operatorC: OperatorFunction<B, C>,
+  operatorD: OperatorFunction<C, D>,
+  operatorE: OperatorFunction<D, E>,
+): CreateEffectCallback<E>;
+
+export function CreateEffect<A, B, C, D, E>(
   type: AppActions["type"],
   operatorA: OperatorFunction<EffectData, A>,
   operatorB?: OperatorFunction<A, B>,
   operatorC?: OperatorFunction<B, C>,
   operatorD?: OperatorFunction<C, D>,
+  operatorE?: OperatorFunction<D, E>,
 ) {
   return (
     action$: Observable<AppActions>,
@@ -54,6 +64,10 @@ export function CreateEffect<A, B, C, D>(
     if (operatorB) {
       if (operatorC) {
         if (operatorD) {
+          if (operatorE) {
+            return effect.pipe(operatorB, operatorC, operatorD, operatorE);
+          }
+
           return effect.pipe(operatorB, operatorC, operatorD);
         }
 

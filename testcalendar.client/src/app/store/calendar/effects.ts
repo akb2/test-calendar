@@ -1,12 +1,5 @@
 import { combineEpics } from "redux-observable";
-import {
-  catchError,
-  distinctUntilChanged,
-  map,
-  of,
-  switchMap,
-  tap,
-} from "rxjs";
+import { catchError, distinctUntilChanged, map, of, switchMap } from "rxjs";
 import { GetSelectedDate } from "../../api/Calendar";
 import {
   AfterMonth,
@@ -18,22 +11,18 @@ import { appInitAction } from "../actions";
 import { CreateEffect } from "../utils";
 import { nextMonth, prevMonth, setDate } from "./slice";
 
+CreateEffect(
+  appInitAction.type,
+  map((data) => data),
+);
+
 const pageInitEpic = CreateEffect(
   appInitAction.type,
   distinctUntilChanged((a, b) => a.action.type === b.action.type),
-  tap(console.log),
   switchMap((data) =>
-    GetSelectedDate().pipe(
-      map(() => data),
-      catchError(() => of(data)),
-    ),
+    GetSelectedDate().pipe(catchError(() => of(data.state.calendar))),
   ),
-  map(({ state }) =>
-    setDate({
-      month: state.calendar.month,
-      year: state.calendar.year,
-    }),
-  ),
+  map(setDate),
 );
 
 const nextMonthEpic = CreateEffect(
