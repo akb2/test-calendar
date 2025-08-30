@@ -35,16 +35,33 @@ namespace TestCalendar.Server.Controllers
     [HttpGet]
     [AllowAnonymous]
     [Route("selected-date")]
-    public SelectedDate GetDate()
+    public ActionResult<SelectedDate> GetDate()
     {
       Month month = GetMonth();
       int year = GetYear();
-
-      return new SelectedDate
+      SelectedDate selectedDate = new SelectedDate
       {
         Month = month,
         Year = year
       };
+
+      return Ok(selectedDate);
+    }
+
+    [HttpPut]
+    [AllowAnonymous]
+    [Route("selected-date")]
+    public IActionResult SetDate([FromBody] SelectedDate date)
+    {
+      if (date == null)
+      {
+        return BadRequest();
+      }
+
+      HttpContext.Session.SetInt32(SessionMonthKey, (int)date.Month);
+      HttpContext.Session.SetInt32(SessionYearKey, date.Year);
+
+      return NoContent();
     }
   }
 }
