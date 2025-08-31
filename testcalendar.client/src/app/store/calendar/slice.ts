@@ -1,10 +1,13 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import type { ActionData } from "../types";
 import type { CalendarState } from "./types";
 
 const now = new Date();
+
 const initialState: CalendarState = {
   year: now.getFullYear(),
   month: now.getMonth(),
+  loading: false,
 };
 
 const calendarSlice = createSlice({
@@ -13,18 +16,27 @@ const calendarSlice = createSlice({
   reducers: {
     setDate: (
       state,
-      action: PayloadAction<Pick<CalendarState, "month" | "year">>,
+      {
+        payload: { month, year, loading },
+      }: ActionData<CalendarState, "month" | "year">,
     ) => {
-      state.month = action.payload.month;
-      state.year = action.payload.year;
+      state.loading = loading ?? state.loading;
+      state.month = month;
+      state.year = year;
     },
-    nextMonth: (state) => state,
-    prevMonth: (state) => state,
+    startLoader: (state) => {
+      state.loading = true;
+    },
+    stopLoader: (state) => {
+      state.loading = false;
+    },
+    nextMonth: (state, _: ActionData<CalendarState>) => {},
+    prevMonth: (state, _: ActionData<CalendarState>) => {},
   },
 });
 
 export const {
   reducer: calendarReducer,
   // Exporting actions for use in components or effects
-  actions: { setDate, nextMonth, prevMonth },
+  actions: { setDate, startLoader, stopLoader, nextMonth, prevMonth },
 } = calendarSlice;

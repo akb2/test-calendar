@@ -1,4 +1,5 @@
 import type { RootState } from "../types";
 
-export const selectYear = (s: RootState) => s.calendar.year;
-export const selectMonth = (s: RootState) => s.calendar.month;
+export const selectYear = ({ calendar: { year } }: RootState) => year;
+export const selectMonth = ({ calendar: { month } }: RootState) => month;
+export const selectLoading = ({ calendar: { loading } }: RootState) => loading;

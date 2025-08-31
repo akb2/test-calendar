@@ -1,6 +1,5 @@
-import type { Dispatch } from "@reduxjs/toolkit";
-import type { StateObservable } from "redux-observable";
-import type { Observable } from "rxjs";
+import type { Dispatch, PayloadAction } from "@reduxjs/toolkit";
+import type { Epic } from "redux-observable";
 import type { appInitAction } from "./actions";
 import type { CalendarAction, CalendarState } from "./calendar/types";
 
@@ -12,12 +11,19 @@ export type AppActions = ReturnType<typeof appInitAction> | CalendarAction;
 
 export type AppDispatch = Dispatch<AppActions>;
 
-export type CreateEffectCallback<T> = (
-  action$: Observable<AppActions>,
-  state$: StateObservable<RootState>,
-) => Observable<T>;
+export type CreateEffectCallback<Out extends AppActions> = Epic<
+  AppActions,
+  Out,
+  RootState
+>;
 
 export interface EffectData {
-  action: CalendarAction;
+  action: AppActions;
   state: RootState;
 }
+
+export type ActionData<
+  T extends object,
+  RK extends keyof T = keyof T,
+  R extends string = string,
+> = PayloadAction<Pick<T, RK> & Partial<T>, R>;

@@ -8,21 +8,29 @@ import {
   BeforeMonthYear,
 } from "../../utils/Date";
 import { appInitAction } from "../actions";
+import type { AppActions, RootState } from "../types";
 import { CreateEffect } from "../utils";
-import { nextMonth, prevMonth, setDate } from "./slice";
+import {
+  nextMonth,
+  prevMonth,
+  setDate,
+  startLoader,
+  stopLoader,
+} from "./slice";
 
-CreateEffect(
+const pageInitLoaderEpic = CreateEffect(
   appInitAction.type,
-  map((data) => data),
+  map(() => startLoader()),
 );
 
-const pageInitEpic = CreateEffect(
+const pageInitLoadDateEpic = CreateEffect(
   appInitAction.type,
   distinctUntilChanged((a, b) => a.action.type === b.action.type),
   switchMap((data) =>
     GetSelectedDate().pipe(catchError(() => of(data.state.calendar))),
   ),
-  map(setDate),
+  map(({ month, year }) => setDate({ month, year, loading: false })),
+  catchError(() => of(stopLoader())),
 );
 
 const nextMonthEpic = CreateEffect(
@@ -45,8 +53,9 @@ const prevMonthEpic = CreateEffect(
   ),
 );
 
-export const calendarEpic = combineEpics(
-  pageInitEpic,
+export const calendarEpic = combineEpics<AppActions, AppActions, RootState>(
+  pageInitLoaderEpic,
   nextMonthEpic,
+  pageInitLoadDateEpic,
   prevMonthEpic,
 );

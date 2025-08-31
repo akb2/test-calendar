@@ -2,7 +2,11 @@ import { Container } from "../../app/components/base/Container/Container";
 import { Button } from "../../app/components/io/Button/Button";
 import { CalendarDaysList } from "../../app/components/io/CalendarDaysList/CalendarDaysList";
 import { MonthLabels } from "../../app/data/App";
-import { selectMonth, selectYear } from "../../app/store/calendar/selectors";
+import {
+  selectLoading,
+  selectMonth,
+  selectYear,
+} from "../../app/store/calendar/selectors";
 import { nextMonth, prevMonth } from "../../app/store/calendar/slice";
 import { useAppDispatch, useAppSelector } from "../../app/store/hooks";
 import {
@@ -27,6 +31,7 @@ export const HomePage = () => {
   const beforeYear = BeforeMonthYear(month, year);
   const afterMonth = AfterMonth(month);
   const afterYear = AfterMonthYear(month, year);
+  const loading = useAppSelector(selectLoading);
 
   UseTitle();
 
@@ -46,7 +51,7 @@ export const HomePage = () => {
           $click={() => dispatcher(nextMonth())}
         />
       </Actions>
-      <CalendarDaysList $month={month} $year={year} />
+      <CalendarDaysList $month={month} $year={year} $loading={loading} />
     </Container>
   );
 };
