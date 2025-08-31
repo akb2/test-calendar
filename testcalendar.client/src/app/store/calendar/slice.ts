@@ -30,8 +30,8 @@ const calendarSlice = createSlice({
     stopLoader: (state) => {
       state.loading = false;
     },
-    nextMonth: (state, _: ActionData<CalendarState>) => {},
-    prevMonth: (state, _: ActionData<CalendarState>) => {},
+    nextMonth: () => {},
+    prevMonth: () => {},
   },
 });
 
