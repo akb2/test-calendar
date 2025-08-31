@@ -35,6 +35,6 @@ export const CurrentDateSubTitle = styled.span`
   vertical-align: top;
 
   &.digit {
-    width: 22px;
+    width: 25px;
   }
 `;
