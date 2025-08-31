@@ -10,10 +10,6 @@ export const CalendarDaysListRoot = styled.div`
   max-width: 100%;
   margin: 0 auto;
   position: relative;
-
-  &.disabled {
-    opacity: 0.5;
-  }
 `;
 
 export const CalendarDaysListItem = styled.div`
@@ -33,6 +29,10 @@ export const CalendarDaysListItem = styled.div`
 
   &.today {
     border-color: ${PrimaryColor};
+  }
+
+  &.disabled {
+    opacity: 0.5;
   }
 `;
 

@@ -15,12 +15,12 @@ export const CalendarDaysList = ({
 }: CalendarDaysListProps) => {
   const daysList = GetMonthDays($month, $year);
   const loading = !!$loading;
-  const disabledClass = loading ? "disabled" : "";
+  const disabledClass = loading && "disabled";
 
   return (
-    <CalendarDaysListRoot className={disabledClass}>
+    <CalendarDaysListRoot>
       {daysList.map((item, index) => {
-        const classes = `${item.inMonth && "current"} ${item.isToday && "today"}`;
+        const classes = `${disabledClass} ${item.inMonth && "current"} ${item.isToday && "today"}`;
 
         return (
           <CalendarDaysListItem
@@ -33,7 +33,7 @@ export const CalendarDaysList = ({
           </CalendarDaysListItem>
         );
       })}
-      <Loader title="Загрузка" loading={loading} />
+      <Loader $title="Загрузка" $loading={loading} $size={120} />
     </CalendarDaysListRoot>
   );
 };
