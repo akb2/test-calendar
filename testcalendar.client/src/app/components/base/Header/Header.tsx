@@ -1,5 +1,6 @@
+import { selectLoading } from "../../../store/calendar/selectors";
 import { setDate } from "../../../store/calendar/slice";
-import { useAppDispatch } from "../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { UseThemeColor } from "../../../utils/Theme";
 import { CurrentDate } from "../../io/CurrentDate/CurrentDate";
 import { Container } from "../Container/Container";
@@ -13,6 +14,7 @@ export const Header = () => {
   const now = new Date();
   const month = now.getMonth();
   const year = now.getFullYear();
+  const calendarLoading = useAppSelector(selectLoading);
 
   UseThemeColor(HeaderBackgroundColor);
 
@@ -21,7 +23,10 @@ export const Header = () => {
       <Container $noPadding $noPaddingLeft $noPaddingRight>
         <HeaderLayout>
           <HeaderMenu />
-          <HeaderMenuItem $click={() => dispatcher(setDate({ month, year }))}>
+          <HeaderMenuItem
+            $disabled={calendarLoading}
+            $click={() => dispatcher(setDate({ month, year }))}
+          >
             <CurrentDate />
           </HeaderMenuItem>
         </HeaderLayout>

@@ -40,6 +40,7 @@ export const HomePage = () => {
       <Actions>
         <Button
           $title={`${MonthLabels[beforeMonth]} ${beforeYear}`}
+          $disabled={loading}
           $click={() => dispatcher(prevMonth())}
         />
         <CalendarLabelLayout>
@@ -48,6 +49,7 @@ export const HomePage = () => {
         </CalendarLabelLayout>
         <Button
           $title={`${MonthLabels[afterMonth]} ${afterYear}`}
+          $disabled={loading}
           $click={() => dispatcher(nextMonth())}
         />
       </Actions>
