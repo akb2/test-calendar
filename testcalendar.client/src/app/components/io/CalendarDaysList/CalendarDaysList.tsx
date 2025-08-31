@@ -1,3 +1,4 @@
+import { Loader } from "../Loader/Loader";
 import { CalendarDaysListItemKey } from "./CalendarDaysList.const";
 import {
   CalendarDaysListItem,
@@ -7,11 +8,17 @@ import {
 import type { CalendarDaysListProps } from "./CalendarDaysList.types";
 import { GetMonthDays } from "./CalendarDaysList.utils";
 
-export const CalendarDaysList = ({ $month, $year }: CalendarDaysListProps) => {
+export const CalendarDaysList = ({
+  $month,
+  $year,
+  $loading,
+}: CalendarDaysListProps) => {
   const daysList = GetMonthDays($month, $year);
+  const loading = !!$loading;
+  const disabledClass = loading ? "disabled" : "";
 
   return (
-    <CalendarDaysListRoot>
+    <CalendarDaysListRoot className={disabledClass}>
       {daysList.map((item, index) => {
         const classes = `${item.inMonth && "current"} ${item.isToday && "today"}`;
 
@@ -26,6 +33,7 @@ export const CalendarDaysList = ({ $month, $year }: CalendarDaysListProps) => {
           </CalendarDaysListItem>
         );
       })}
+      <Loader title="Загрузка" loading={loading} />
     </CalendarDaysListRoot>
   );
 };

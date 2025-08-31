@@ -9,6 +9,11 @@ export const CalendarDaysListRoot = styled.div`
   width: fit-content;
   max-width: 100%;
   margin: 0 auto;
+  position: relative;
+
+  &.disabled {
+    opacity: 0.5;
+  }
 `;
 
 export const CalendarDaysListItem = styled.div`
