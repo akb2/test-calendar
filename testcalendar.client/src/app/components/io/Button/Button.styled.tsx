@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ClassDisabled } from "../../../data/ClassNames";
 import {
   AnimationSpeed,
   DisabledColor,
@@ -22,5 +23,11 @@ export const ButtonRoot = styled.button`
   &:hover {
     background-color: ${PrimaryColor};
     color: white;
+  }
+
+  &.${ClassDisabled} {
+    background-color: ${DisabledColor};
+    color: gray;
+    cursor: not-allowed;
   }
 `;

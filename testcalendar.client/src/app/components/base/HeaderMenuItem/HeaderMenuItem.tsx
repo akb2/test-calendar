@@ -8,9 +8,10 @@ import { HeaderMenuItemsActiveDetect } from "./HeaderMenuItem.utils";
 export const HeaderMenuItem = ({
   children,
   $menuItem,
+  $disabled,
   $click,
 }: HeaderMenuItemProps) =>
-  $menuItem ? (
+  $menuItem && !$disabled ? (
     <HeaderMenuItemLinkRoot
       to={$menuItem.to}
       end={!!$menuItem.end}
