@@ -1,5 +1,6 @@
+import { ClassCurrent, ClassDisabled } from "../../../data/ClassNames";
 import { Loader } from "../Loader/Loader";
-import { CalendarDaysListItemKey } from "./CalendarDaysList.const";
+import { CalendarDaysListItemKey, ClassToday } from "./CalendarDaysList.const";
 import {
   CalendarDaysListItem,
   CalendarDaysListItemNumber,
@@ -15,12 +16,12 @@ export const CalendarDaysList = ({
 }: CalendarDaysListProps) => {
   const daysList = GetMonthDays($month, $year);
   const loading = !!$loading;
-  const disabledClass = loading && "disabled";
+  const disabledClass = loading && ClassDisabled;
 
   return (
     <CalendarDaysListRoot>
       {daysList.map((item, index) => {
-        const classes = `${disabledClass} ${item.inMonth && "current"} ${item.isToday && "today"}`;
+        const classes = `${disabledClass} ${item.inMonth && ClassCurrent} ${item.isToday && ClassToday}`;
 
         return (
           <CalendarDaysListItem

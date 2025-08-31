@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { ClassCurrent, ClassDisabled } from "../../../data/ClassNames";
 import { PrimaryColor } from "../../../data/Theme";
-import { DefaultColor } from "./CalendarDaysList.const";
+import { ClassToday, DefaultColor } from "./CalendarDaysList.const";
 
 export const CalendarDaysListRoot = styled.div`
   display: grid;
@@ -19,19 +20,19 @@ export const CalendarDaysListItem = styled.div`
   border-radius: 5px;
   border: 1px solid ${DefaultColor};
 
-  &.current {
+  &.${ClassCurrent} {
     background-color: ${DefaultColor};
 
-    &.today {
+    &.${ClassToday} {
       background-color: ${PrimaryColor};
     }
   }
 
-  &.today {
+  &.${ClassToday} {
     border-color: ${PrimaryColor};
   }
 
-  &.disabled {
+  &.${ClassDisabled} {
     opacity: 0.5;
   }
 `;
@@ -45,15 +46,15 @@ export const CalendarDaysListItemNumber = styled.span`
   font-weight: bold;
   color: lightgray;
 
-  &.current {
+  &.${ClassCurrent} {
     color: gray;
 
-    &.today {
+    &.${ClassToday} {
       color: white;
     }
   }
 
-  &:not(.current).today {
+  &:not(.${ClassCurrent}).${ClassToday} {
     color: ${PrimaryColor};
   }
 `;

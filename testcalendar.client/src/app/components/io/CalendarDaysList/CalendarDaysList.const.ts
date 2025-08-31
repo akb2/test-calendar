@@ -13,3 +13,5 @@ export const CalendarDaysListItemKey = (
   item: MonthDaysListItem,
   index: number,
 ) => [index, item.day].join("-");
+
+export const ClassToday = "today";
