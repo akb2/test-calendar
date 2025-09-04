@@ -27,3 +27,6 @@ export const Get = <O>(url: string) => Request<O>(url, "GET");
 
 export const Post = <O, I extends object>(url: string, body: I) =>
   Request<O, I>(url, "POST", body);
+
+export const Put = <O, I extends object>(url: string, body: I) =>
+  Request<O, I>(url, "PUT", body);
