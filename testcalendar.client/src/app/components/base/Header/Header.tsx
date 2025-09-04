@@ -1,5 +1,5 @@
 import { selectLoading } from "../../../store/calendar/selectors";
-import { setDate } from "../../../store/calendar/slice";
+import { saveDate } from "../../../store/calendar/slice";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { UseThemeColor } from "../../../utils/Theme";
 import { CurrentDate } from "../../io/CurrentDate/CurrentDate";
@@ -25,7 +25,7 @@ export const Header = () => {
           <HeaderMenu />
           <HeaderMenuItem
             $disabled={calendarLoading}
-            $click={() => dispatcher(setDate({ month, year }))}
+            $click={() => dispatcher(saveDate({ month, year }))}
           >
             <CurrentDate />
           </HeaderMenuItem>

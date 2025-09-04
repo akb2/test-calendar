@@ -30,6 +30,10 @@ const calendarSlice = createSlice({
     stopLoader: (state) => {
       state.loading = false;
     },
+    saveDate: (
+      state,
+      action: ActionData<CalendarState, "month" | "year">,
+    ) => {},
     nextMonth: () => {},
     prevMonth: () => {},
   },
@@ -38,5 +42,5 @@ const calendarSlice = createSlice({
 export const {
   reducer: calendarReducer,
   // Exporting actions for use in components or effects
-  actions: { setDate, startLoader, stopLoader, nextMonth, prevMonth },
+  actions: { setDate, startLoader, stopLoader, saveDate, nextMonth, prevMonth },
 } = calendarSlice;
