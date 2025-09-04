@@ -1,5 +1,7 @@
 import { ofType, type StateObservable } from "redux-observable";
 import { map, Observable, withLatestFrom, type OperatorFunction } from "rxjs";
+import type { TypeOrArray } from "../models/App";
+import { AnyToArray } from "../utils/App";
 import type {
   AppActions,
   CreateEffectCallback,
@@ -8,25 +10,25 @@ import type {
 } from "./types";
 
 export function CreateEffect<O extends AppActions>(
-  type: AppActions["type"],
+  mixedTypes: TypeOrArray<AppActions["type"]>,
   operatorO: OperatorFunction<EffectData, O>,
 ): CreateEffectCallback<O>;
 
 export function CreateEffect<A, O extends AppActions>(
-  type: AppActions["type"],
+  mixedTypes: TypeOrArray<AppActions["type"]>,
   operatorA: OperatorFunction<EffectData, A>,
   operatorO: OperatorFunction<A, O>,
 ): CreateEffectCallback<O>;
 
 export function CreateEffect<A, B, O extends AppActions>(
-  type: AppActions["type"],
+  mixedTypes: TypeOrArray<AppActions["type"]>,
   operatorA: OperatorFunction<EffectData, A>,
   operatorB: OperatorFunction<A, B>,
   operatorO: OperatorFunction<B, O>,
 ): CreateEffectCallback<O>;
 
 export function CreateEffect<A, B, C, O extends AppActions>(
-  type: AppActions["type"],
+  mixedTypes: TypeOrArray<AppActions["type"]>,
   operatorA: OperatorFunction<EffectData, A>,
   operatorB: OperatorFunction<A, B>,
   operatorC: OperatorFunction<B, C>,
@@ -34,7 +36,7 @@ export function CreateEffect<A, B, C, O extends AppActions>(
 ): CreateEffectCallback<O>;
 
 export function CreateEffect<A, B, C, D, O extends AppActions>(
-  type: AppActions["type"],
+  mixedTypes: TypeOrArray<AppActions["type"]>,
   operatorA: OperatorFunction<EffectData, A>,
   operatorB: OperatorFunction<A, B>,
   operatorC: OperatorFunction<B, C>,
@@ -43,7 +45,7 @@ export function CreateEffect<A, B, C, D, O extends AppActions>(
 ): CreateEffectCallback<O>;
 
 export function CreateEffect<A, B, C, D, E, O extends AppActions>(
-  type: AppActions["type"],
+  mixedTypes: TypeOrArray<AppActions["type"]>,
   operatorA: OperatorFunction<EffectData, A>,
   operatorB: OperatorFunction<A, B>,
   operatorC: OperatorFunction<B, C>,
@@ -53,7 +55,7 @@ export function CreateEffect<A, B, C, D, E, O extends AppActions>(
 ): CreateEffectCallback<O>;
 
 export function CreateEffect<A, B, C, D, E, O extends AppActions>(
-  type: AppActions["type"],
+  mixedTypes: TypeOrArray<AppActions["type"]>,
   operatorA: OperatorFunction<EffectData, A>,
   operatorB?: OperatorFunction<A, B>,
   operatorC?: OperatorFunction<B, C>,
@@ -65,8 +67,9 @@ export function CreateEffect<A, B, C, D, E, O extends AppActions>(
     action$: Observable<AppActions>,
     state$: StateObservable<RootState>,
   ) => {
+    const types = AnyToArray(mixedTypes);
     const effect = action$.pipe(
-      ofType<AppActions, AppActions["type"], AppActions>(type),
+      ofType<AppActions, AppActions["type"], AppActions>(...types),
       withLatestFrom(state$),
       map<[AppActions, RootState], EffectData>(([action, state]) => ({
         action,
