@@ -26,4 +26,4 @@ export type ActionData<
   T extends object,
   RK extends keyof T = keyof T,
   R extends string = string,
-> = PayloadAction<Pick<T, RK> & Partial<T>, R>;
+> = PayloadAction<Partial<T> & Pick<T, RK>, R>;

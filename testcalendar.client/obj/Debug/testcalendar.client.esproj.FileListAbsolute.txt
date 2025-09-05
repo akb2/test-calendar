@@ -1,3 +1,2 @@
 d:/Documents/Frontend/TestCalendar/testcalendar.client/obj/Debug/testcalendar.client.esproj.CoreCompileInputs.cache
 /Users/Andrew/Documents/Проекты/test-calendar/testcalendar.client/obj/Debug/testcalendar.client.esproj.CoreCompileInputs.cache
-d:\Documents\Frontend\TestCalendar\testcalendar.client\obj\Debug\testcalendar.client.esproj.CoreCompileInputs.cache

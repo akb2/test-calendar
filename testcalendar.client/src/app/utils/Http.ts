@@ -1,4 +1,5 @@
 import { Observable } from "rxjs";
+import { httpCode } from "../data/Http";
 import type { Nullable } from "../models/App";
 import type { HttpMethod } from "../models/Http";
 
@@ -8,19 +9,38 @@ const Request = <O, I extends Nullable<object> = undefined>(
   body?: I,
 ): Observable<O> =>
   new Observable((observer) => {
-    fetch(url, { method, body: !!body ? JSON.stringify(body) : undefined })
+    const data: RequestInit = {
+      method,
+      body: !!body ? JSON.stringify(body) : undefined,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const errorHandler = <T>(error: T) => {
+      observer.error(error);
+      observer.complete();
+    };
+
+    fetch(url, data)
       .then(async (responce) => {
         if (responce.ok) {
           try {
-            return observer.next((await responce.json()) as O);
+            const data =
+              responce.status === httpCode.noContent
+                ? undefined
+                : await responce.json();
+
+            observer.next(data as O);
+            observer.complete();
           } catch (error) {
-            observer.error(error);
+            errorHandler(error);
           }
         } else {
-          observer.error(responce);
+          errorHandler(responce);
         }
       })
-      .catch((error) => observer.error(error));
+      .catch(errorHandler);
   });
 
 export const Get = <O>(url: string) => Request<O>(url, "GET");
