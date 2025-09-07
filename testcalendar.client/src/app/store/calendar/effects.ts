@@ -56,11 +56,13 @@ const prevMonthEpic = CreateEffect(
 
 const saveDateEpic = CreateEffect(
   saveDate.type,
-  switchMap(({ action: { payload } }) =>
-    SetSelectedDate(payload!).pipe(
-      map(() => setDate({ ...payload!, loading: false })),
-      catchError(() => of(stopLoader())),
-    ),
+  switchMap(({ state: { calendar }, action: { payload } }) =>
+    calendar.month !== payload?.month || calendar.year !== payload?.year
+      ? SetSelectedDate(payload!).pipe(
+          map(() => setDate({ ...payload!, loading: false })),
+          catchError(() => of(stopLoader())),
+        )
+      : of(stopLoader()),
   ),
 );
 
